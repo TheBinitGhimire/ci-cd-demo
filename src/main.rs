@@ -7,7 +7,7 @@ fn index() -> Html<&'static str> {
         Hello, there!\
     </h1>\
     <h2 align=\"center\">\
-        This is the Initial Deployment.\
+        This is the Second Deployment.\
     </h2>")
 }
 
