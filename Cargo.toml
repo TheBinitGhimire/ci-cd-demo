@@ -1,0 +1,12 @@
+[package]
+name = "ci-cd-demo"
+version = "0.1.0"
+authors = ["Binit Ghimire <thebinitghimire@gmail.com>"]
+license = "MIT"
+edition = "2021"
+keywords = ["ci-cd", "ci", "cd", "demo", "demonstration"]
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+rocket = "0.5.0-rc.1"
