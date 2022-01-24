@@ -1,0 +1,37 @@
+name: Deploy to Heroku!
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  heroku-deployment:
+    name: Deploy to Heroku!
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      
+      - name: Login to Heroku!
+        run: |
+          cat > ~/.netrc <<EOF
+            machine api.heroku.com
+              login $LOGIN_EMAIL
+              password $API_KEY
+            machine git.heroku.com
+              login $LOGIN_EMAIL
+              password $API_KEY
+          EOF
+        env:
+          API_KEY: ${{ secrets.API_KEY }}
+          LOGIN_EMAIL: ${{ secrets.LOGIN_EMAIL }}
+      
+      - name: Add Heroku as origin!
+        run: |
+          git remote add heroku https://git.heroku.com/whois-ci-cd-demo.git
+      
+      - name: Push to Heroku!
+        run: |
+          git push heroku main
